@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>공시·배당 스나이퍼 PRO (K-Alpha Radar) — DART 0.5초 호재·독소 공시 & 미장→국장 개장전 수급 레이더</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand-wrap">
+      <span class="radar-pulse"></span>
+      <div>
+        <div class="brand-title">🎯 공시·배당 스나이퍼 PRO <span class="brand-badge">K-Alpha Radar V1.0</span></div>
+        <div style="font-size:0.75rem;color:#94a3b8;">DART·KIND 0.5초 S급 호재/5대 독소 공시 3줄 번역 & 08:25 미장→국장 수급 히트맵</div>
+      </div>
+    </div>
+    <div class="top-actions">
+      <span id="engineStatusPill" class="engine-pill">⚡ 코다리 HERMES-OMEGA V15 실시간 연동 중</span>
+      <button class="btn btn-outline" id="btnShareMorningTelegram">✈️ 오늘 아침 브리핑 텔레그램 전송</button>
+      <button class="btn btn-primary" id="btnOpenSubscribe">💎 스나이퍼 PRO 구독 (월 29,000원)</button>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="legal-banner">
+      <span>🛡️ <strong>[준법 고지]</strong> 본 서비스는 유사투자자문·종목추천·매매리딩이 아닌, <strong>금융감독원 DART·KRX KIND 공시 원문 AI 3줄 요약 및 미장·국장 상관계수 통계 대시보드(소프트웨어 이용권)</strong>입니다.</span>
+      <span id="updatedAtLabel">최근 동기화: -</span>
+    </div>
+
+    <section class="hero-grid">
+      <div class="card">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
+          <span class="grade-pill bull">⚡ 0.5초 DART 스나이퍼 & US→KR 밸류체인</span>
+          <span id="krStanceBadge" class="grade-pill neutral">오늘 국장 스탠스: 경계</span>
+        </div>
+        <h1 class="hero-headline">장중 유상증자 폭탄은 0.5초 만에 피하고,<br/>자사주 소각·단일판매 수주·미장 동조 대장주는 개장 전에 잡으세요.</h1>
+        <p class="hero-sub" id="krSummaryText">코다리주식에이젼트 HERMES-OMEGA V15가 포착한 실시간 공시 감사 로그와 미국장 마감 동조화 데이터를 투자자용 3줄 한글 카드로 즉시 번역합니다.</p>
+        <div class="kpi-row">
+          <div class="kpi-box">
+            <div class="kpi-label">오늘 포착 공시</div>
+            <div class="kpi-val" id="kpiTotalDart">44건</div>
+          </div>
+          <div class="kpi-box">
+            <div class="kpi-label">🔥 S/A급 호재 공시</div>
+            <div class="kpi-val" style="color:#34d399;" id="kpiBullDart">8건</div>
+          </div>
+          <div class="kpi-box">
+            <div class="kpi-label">🚨 5대 독소 공시 경보</div>
+            <div class="kpi-val" style="color:#fb7185;" id="kpiToxicDart">2건</div>
+          </div>
+          <div class="kpi-box">
+            <div class="kpi-label">🌏 미장 동조 핵심섹터</div>
+            <div class="kpi-val" style="color:#38bdf8;" id="kpiActiveSectors">4개</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card tts-console">
+        <div>
+          <div style="display:flex;justify-content:space-between;align-items:center;">
+            <strong style="font-size:1rem;">🎙️ 08:25 출근길 10초 AI 앵커 음성 브리핑</strong>
+            <select id="ttsVoiceSelect" class="search-input" style="min-width:170px;padding:5px 8px;font-size:0.78rem;"></select>
+          </div>
+          <div id="morningScriptBox" class="tts-script-box">브리핑 스크립트를 불러오는 중입니다...</div>
+        </div>
+        <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
+          <button class="btn btn-accent" id="btnPlayMorningTTS">🔊 10초 모닝 브리핑 듣기</button>
+          <button class="btn btn-outline" id="btnDownloadBriefingCard">🖼️ 인스타·단톡방 공유카드 저장(PNG)</button>
+          <audio id="ttsAudioPlayer" controls style="height:34px;flex:1;min-width:180px;"></audio>
+        </div>
+      </div>
+    </section>
+
+    <nav class="tabs-nav">
+      <button class="tab-btn active" data-tab="tab-dart">⚡ 실시간 DART·KIND 호재/독소 공시 (3줄 요약)</button>
+      <button class="tab-btn" data-tab="tab-supply">🌏 08:25 미장→국장 수급 히트맵 & 대장주</button>
+      <button class="tab-btn" data-tab="tab-watchlist">🛡️ 내 보유종목(5종목) 독소·호재 1초 방어막</button>
+      <button class="tab-btn" data-tab="tab-dividend">💰 자사주 소각·배당 주주환원 캘린더</button>
+      <button class="tab-btn" data-tab="tab-pricing">💎 스나이퍼 PRO 멤버십 & 수익 시뮬레이터</button>
+    </nav>
+
+    <!-- TAB 1: DART 실시간 피드 -->
+    <section id="tab-dart" class="tab-panel active">
+      <div class="filter-bar">
+        <div class="chip-group" id="dartFilterChips">
+          <button class="chip active" data-filter="all">전체 공시</button>
+          <button class="chip" data-filter="bull">🔥 S/A급 호재 승인만</button>
+          <button class="chip" data-filter="toxic">🚨 유상증자·독소공시 경보</button>
+          <button class="chip" data-filter="treasury">💎 자사주 소각·취득</button>
+          <button class="chip" data-filter="supply">🚀 단일판매·공급계약</button>
+        </div>
+        <input type="text" id="dartSearchInput" class="search-input" placeholder="종목명·공시제목 검색 (예: 휴젤, 셀리드, SK텔레콤)" />
+      </div>
+      <div id="dartFeedContainer" class="feed-list"></div>
+    </section>
+
+    <!-- TAB 2: US -> KR 밸류체인 -->
+    <section id="tab-supply" class="tab-panel">
+      <div class="card" style="margin-bottom:16px;">
+        <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;">
+          <div>
+            <h2 style="font-size:1.2rem;font-weight:800;">🌏 밤새 미국장 급등주 → 오늘 한국장 밸류체인 1순위 전이 매트릭스</h2>
+            <p style="font-size:0.84rem;color:#94a3b8;">미국 마감 시세(RIVN +9.29%, GEV +7.03%, REGN +4.90%, RTX +2.01%)와 한국 Tier 1·Tier 2 공급망 상관계수를 자동 매핑합니다.</p>
+          </div>
+          <button class="btn btn-accent" id="btnRenderShareCard2">📸 오늘 수급 히트맵 1장 요약 PNG 다운로드</button>
+        </div>
+        <div id="usMoversStrip" style="display:flex;gap:8px;flex-wrap:wrap;margin-top:12px;"></div>
+      </div>
+      <div id="sectorGridContainer" class="sector-grid"></div>
+      <h3 style="margin:18px 0 10px;font-size:1.05rem;">🎯 오늘 개장 전 최우선 수급 관찰 타겟 (Tier 1 & Tier 2)</h3>
+      <div id="supplyTargetsContainer" class="feed-list"></div>
+    </section>
+
+    <!-- TAB 3: 내 보유종목 방어막 -->
+    <section id="tab-watchlist" class="tab-panel">
+      <div class="card" style="margin-bottom:16px;">
+        <h2 style="font-size:1.18rem;font-weight:800;margin-bottom:6px;">🛡️ 내 보유종목 독소·호재 1초 방어막 (최대 8종목)</h2>
+        <p style="font-size:0.84rem;color:#94a3b8;margin-bottom:12px;">보유 종목에 유상증자·CB 발행 등 독소 공시나 자사주 소각·공급계약 호재가 뜨는 즉시 0.5초 만에 최상단 경보 및 텔레그램 알림을 발송합니다.</p>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;">
+          <input id="watchNameInput" class="search-input" placeholder="종목명 입력 (예: 한미반도체, 알테오젠, 선도전기)" />
+          <input id="watchSectorInput" class="search-input" placeholder="섹터/메모 (선택)" />
+          <button class="btn btn-primary" id="btnAddWatch">➕ 감시 종목 등록</button>
+        </div>
+      </div>
+      <div id="watchlistContainer" class="feed-list"></div>
+    </section>
+
+    <!-- TAB 4: 배당·주주환원 캘린더 -->
+    <section id="tab-dividend" class="tab-panel">
+      <div class="card" style="margin-bottom:16px;">
+        <h2 style="font-size:1.18rem;font-weight:800;">💰 자사주 소각·취득 & 분기배당 밸류업 스나이퍼 캘린더</h2>
+        <p style="font-size:0.84rem;color:#94a3b8;">유통주식수를 영구 감소시키는 '자사주 소각 결정'과 고배당 밸류업 일정을 실시간 추적합니다.</p>
+      </div>
+      <div id="dividendContainer" class="feed-list"></div>
+    </section>
+
+    <!-- TAB 5: 요금제 & 토스페이먼츠 구독 -->
+    <section id="tab-pricing" class="tab-panel">
+      <div class="pricing-grid">
+        <div class="price-card">
+          <div>
+            <span class="grade-pill neutral">FREE · 무료 체험</span>
+            <h3 style="font-size:1.25rem;margin:10px 0 4px;">장마감 지연 요약 플랜</h3>
+            <div style="font-size:1.7rem;font-weight:800;margin-bottom:12px;">₩0 <span style="font-size:0.85rem;color:#94a3b8;">/ 월</span></div>
+            <ul style="font-size:0.85rem;color:#cbd5e1;list-style:none;display:flex;flex-direction:column;gap:8px;">
+              <li>✔️ 장마감 후 1일 1회 주요 공시 요약 열람</li>
+              <li>✔️ 내 보유종목 1개 기본 등록</li>
+              <li>❌ 장중 0.5초 실시간 독소·호재 푸시 미제공</li>
+              <li>❌ 08:25 미장→국장 개장전 히트맵 미제공</li>
+            </ul>
+          </div>
+          <button class="btn btn-outline" style="margin-top:18px;width:100%;justify-content:center;">현재 무료 체험 중</button>
+        </div>
+
+        <div class="price-card featured">
+          <div>
+            <span class="grade-pill bull">🔥 BEST · 개인 투자자 92% 선택</span>
+            <h3 style="font-size:1.25rem;margin:10px 0 4px;">스나이퍼 PRO 월 정기구독</h3>
+            <div style="font-size:1.7rem;font-weight:800;margin-bottom:12px;color:#38bdf8;">₩29,000 <span style="font-size:0.85rem;color:#94a3b8;">/ 월 (부가세 포함)</span></div>
+            <ul style="font-size:0.85rem;color:#cbd5e1;list-style:none;display:flex;flex-direction:column;gap:8px;">
+              <li>⚡ <strong>DART·KIND 0.5초 실시간 S급 호재 & 5대 독소 공시 3줄 번역</strong></li>
+              <li>🌏 <strong>매일 08:25 미장→국장 6대 섹터 수급 히트맵 & 대장주 브리핑</strong></li>
+              <li>🛡️ 내 보유종목 8개 실시간 독소공시 텔레그램·웹 경보</li>
+              <li>🎙️ 출근길 10초 AI 경제 앵커 음성 브리핑 무제한</li>
+            </ul>
+          </div>
+          <button class="btn btn-primary" data-plan="pro_monthly" style="margin-top:18px;width:100%;justify-content:center;">💳 토스페이먼츠 월 29,000원 즉시 시작</button>
+        </div>
+
+        <div class="price-card">
+          <div>
+            <span class="grade-pill bull">💎 VIP 연간 패스 (31% 할인)</span>
+            <h3 style="font-size:1.25rem;margin:10px 0 4px;">스나이퍼 PRO 연간 VIP 패스</h3>
+            <div style="font-size:1.7rem;font-weight:800;margin-bottom:12px;color:#34d399;">₩240,000 <span style="font-size:0.85rem;color:#94a3b8;">/ 1년 (월 20,000원꼴)</span></div>
+            <ul style="font-size:0.85rem;color:#cbd5e1;list-style:none;display:flex;flex-direction:column;gap:8px;">
+              <li>⚡ PRO 월간 플랜의 모든 기능 100% 포함</li>
+              <li>💰 자사주 소각·배당락일 D-7 선취매 캘린더 알림</li>
+              <li>🖼️ 스레드·블로그·단톡방 워터마크 공유카드 무제한 발급</li>
+              <li>🧾 사업자 지출증빙·현금영수증 즉시 발행</li>
+            </ul>
+          </div>
+          <button class="btn btn-accent" data-plan="pro_annual" style="margin-top:18px;width:100%;justify-content:center;">💳 연간 VIP 패스 (240,000원) 결제</button>
+        </div>
+      </div>
+
+      <div id="checkoutResultBox" class="card" style="margin-top:18px;display:none;"></div>
+    </section>
+
+    <!-- 공유용 1장 요약 PNG 캔버스 (숨김 렌더링 지원) -->
+    <canvas id="shareCardCanvas" width="1080" height="1080" style="display:none;"></canvas>
+
+    <footer class="footer">
+      <div><strong>상호명:</strong> 다니마켓 (영문: K-PICK STORE) &nbsp;|&nbsp; <strong>대표자:</strong> 김정애 &nbsp;|&nbsp; <strong>사업자등록번호:</strong> 307-37-01599</div>
+      <div><strong>사업장 소재지:</strong> 인천광역시 남동구 경인로524번길 16, 3동 508호(간석동, 한진아파트) &nbsp;|&nbsp; <strong>업태/종목:</strong> 도매 및 소매업 / 전자상거래 소매업</div>
+      <div><strong>개인정보보호책임자:</strong> 김정애 (sk13254@gmail.com) &nbsp;|&nbsp; 결제대행(PG): 토스페이먼츠(주)</div>
+      <div style="margin-top:6px;color:#64748b;">※ 본 서비스가 제공하는 모든 공시 요약 및 글로벌 상관계수 데이터는 정보 제공을 목적으로 하며, 투자 판단과 그에 따른 손익의 책임은 투자자 본인에게 있습니다.</div>
+    </footer>
+  </main>
+
+  <script src="radar_bundle.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
+
